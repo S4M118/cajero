@@ -17,6 +17,7 @@ imagenes["5"] = "5jfif.jfif"
 
 
 function entregarDinero() {
+    entregado = [];
     resultado.innerHTML = "";
     var t = document.getElementById("dinero");
     dinero = parseInt(t.value);
@@ -37,9 +38,8 @@ function entregarDinero() {
     } else {
         for(var e of entregado) {
             if(e.cantidad > 0) {
+                resultado.innerHTML += "<p>Retiraste:</p>";
                 resultado.innerHTML = resultado.innerHTML + e.cantidad + " billetes de $" + e.valor + "<br />";
-                resultado.innerHTML += "<p>Retiraste:<br /></br>";
-
                 for(var bi = 1; bi <= e.cantidad; bi++) {
                             resultado.innerHTML += "<img src=" + e.imagen.src + " />" + "<br /> <hr />"
                 }
@@ -48,14 +48,13 @@ function entregarDinero() {
     }
 }
 
+
 function dineroRestante() {
     var total = 0;
     for(var bi of caja) {
         total +=  bi.valor * bi.cantidad;
-     } if (entregarDinero == true) {
-        total = total - valor
-     }
-    alert("La cantidad actual de dinero es de " + total);
+     } 
+     alert("La cantidad actual de dinero es de " + total);
 }
 
 var caja = [];
